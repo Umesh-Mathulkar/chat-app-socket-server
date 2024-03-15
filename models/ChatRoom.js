@@ -1,5 +1,15 @@
 const mongoose = require('mongoose');
 
+const FileSchema = new mongoose.Schema({
+  fileName: {
+    type: String,
+  },
+  filePath: {
+    type: String,
+  },
+  // Add other file properties if needed
+});
+
 const MessageSchema = new mongoose.Schema({
   sender: {
     type: String,
@@ -7,8 +17,8 @@ const MessageSchema = new mongoose.Schema({
   },
   message: {
     type: String,
-    required: true,
   },
+  file: FileSchema, // Use the FileSchema for the file field
   timestamp: {
     type: Date,
     default: Date.now,
